@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 // import axios from "axios";
+import { useLogin } from "../context/LoginContext";
 import { useHistory } from "react-router-dom";
 import { axiosAuth } from "../utils/axiosAuth";
 // import e from "express";
@@ -9,8 +10,8 @@ const initialColor = {
 	code: { hex: "" }
 };
 
-const ColorList = ({ colors, updateColors }) => {
-	const history = useHistory();
+const ColorList = ({ colors, updateColors, history }) => {
+	// const history = useHistory();
 	const [editing, setEditing] = useState(false);
 	const [colorToEdit, setColorToEdit] = useState(initialColor);
 	console.log(colors);
@@ -40,6 +41,7 @@ const ColorList = ({ colors, updateColors }) => {
 		axiosAuth().delete(`colors/${color.id}`)
 			.then(res => {
 				console.log(res.data);
+				// pushToPath("/bubbles");
 				history.push("/bubbles");
 				window.location.reload();
 			})
