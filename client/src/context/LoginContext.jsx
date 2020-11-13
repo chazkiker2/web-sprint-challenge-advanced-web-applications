@@ -19,7 +19,7 @@ export const LoginProvider = ({ children }) => {
 			.then(res => {
 				console.log(res.data.payload);
 				setToken(res.data.payload);
-				history.push("/");
+				history.push("/bubbles");
 			}).catch(err => {
 				console.log(err);
 			});
